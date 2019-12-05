@@ -27,6 +27,9 @@
 
 
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".NoteListActivity"></activity>
+
+
     </application>
 
 </manifest>
