@@ -39,12 +39,12 @@ public class NoteListActivity extends AppCompatActivity {
     }
 
     private void initData() {
-
-
-        FirebaseDatabase.getInstance().getReference().child("Note").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Note")
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                noteList.clear();
                 for(DataSnapshot snapshot: dataSnapshot.getChildren() ){
 
                     Note note = snapshot.getValue(Note.class);

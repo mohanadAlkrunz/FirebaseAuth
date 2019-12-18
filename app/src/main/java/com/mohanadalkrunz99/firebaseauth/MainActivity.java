@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,24 +61,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        FirebaseDatabase.getInstance().getReference().child("Note").child("-LvKm8tyZUCNyvycUVoM")
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        Long createdAt = dataSnapshot.child("createdAt").getValue(Long.class);
-//                        String desc = dataSnapshot.child("desc").getValue().toString();
-//                        String id = dataSnapshot.child("id").getValue(String.class);
-//                        String title = dataSnapshot.child("title").getValue(String.class);
-//
-//
-//                        note_content.setText(title + " " +desc );
-//                        Toast.makeText(MainActivity.this, title + " " +desc, Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {    }
-//                });
+        FirebaseDatabase.getInstance().getReference().child("Note").child("-LvZyjvGPh8rLz2SWo3z")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Long createdAt = dataSnapshot.child("createdAt").getValue(Long.class);
+                        String desc = dataSnapshot.child("desc").getValue().toString();
+                        String id = dataSnapshot.child("id").getValue(String.class);
+                        String title = dataSnapshot.child("title").getValue(String.class);
+
+
+                        note_content.setText(title + " " +desc );
+                        Toast.makeText(MainActivity.this, title + " " +desc, Toast.LENGTH_SHORT).show();
+
+                        Log.d("onDataChange",title + " " +desc);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {    }
+                });
 
 
     }
